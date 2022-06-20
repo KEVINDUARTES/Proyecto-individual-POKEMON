@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./card.css";
 
-export const Card = ({ array, img }) => {
+export const Card = ({ array, img }) => {//la card renderiza lo que le pso por props
   return (
     <>
       <div className="container">
