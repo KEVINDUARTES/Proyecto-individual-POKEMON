@@ -6,12 +6,12 @@ const initialState = {
   team: [],
 };
 
-const rootReducer = (state = initialState, action) => {//le paso las action a state
+const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case "GET_TYPE":
       return {
         ...state,//una copia del estado
-        types: action.payload,//le concateno el nuevo payload
+        types: action.payload,// le digo en el arreglo vasio llenalo con la accion que me traje llamada get_type
       };
     case "GET_POKEMONS"://una copia de getpokemons que viene de las accion
       return {

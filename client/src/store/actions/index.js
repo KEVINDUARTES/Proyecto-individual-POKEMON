@@ -52,7 +52,7 @@ export function filterByAttack(payload){
 
 export function getPokemons() { // con el use effect de home despacho esto
   return async function (dispatch) {
-    var json = await axios.get("/pokemons");
+    var json = await axios.get("/pokemons");//le paso la ruta del back que me trae todos los pokemons
     dispatch({
       type: "GET_POKEMONS",
       payload: json.data,//es lo que devulve la ruta

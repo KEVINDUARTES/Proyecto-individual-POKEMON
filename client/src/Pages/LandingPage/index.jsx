@@ -20,11 +20,11 @@ export const LandingPage = () => {
           <input type="submit" value="See Pokemon" className={style.myButton} />
         </Link>
 
-        <h3 className={style.love}>Hecho con &hearts; para henry</h3>
+  
       </div>
 
-      <div>
-        <img src="img/pikachu.png" alt="" />
+      <div>jpg
+        <img src="https://i.pinimg.com/originals/a4/86/bc/a486bc6092d979b69954c52b943799ff.png" alt="" />
       </div>
     </div>
   );

@@ -9,8 +9,9 @@ export const getTypes = () => async (dispatch) => {
   });
 };
 
-export const getPokemons = () => async (dispatch) => {
-  const response = await fetch(`https://kevindex.herokuapp.com/pokemons `);
+export const getPokemons = () => async (dispatch) => {                  //aca hago la coneccion entre el front y el back
+  const response = await fetch(`https://kevindex.herokuapp.com/pokemons `);//le paso la ruta del back que me trae todos los pokemons
+
   const data = await response.json();
   dispatch({
     type: "GET_POKEMONS",

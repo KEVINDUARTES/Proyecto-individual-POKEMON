@@ -16,13 +16,13 @@ import SearchBar from "./SearchBar";
 import "./Home.css";
 
 function Home() 
-  const dispatch = useDispatch(); // CON EL USE DISPATCH DESPACHO UNA FUNCION, me traigo la accion y la dispacho (store/actions/index.jss) #2
-  const allPokemons = useSelector((state) => state.pokemons) // #1  me traigo el state de los pokemons( de redux,(initial state) )USE SELECTOR RECIBE UNA FUNCION DE INICIAL STATE(REDUX), Y ME TRAIGO LA FUNCION DE POKEMON DE REDUCER INITIAL STATE. ESTO ME TRAE TODOS LOS estados de  POKEMONES
-  const [currentPage, setCurrentPage] = useState(1);//declaro la pagina actual y cual va a ser la nueva pagina actual. La pag actual va arrancar en 1
-  const [pokemonsPerPage] = useState(12);//va a setear los pokemones por pagina. me va guardar por pagina 12 pokemons
-  const indexOfLastPokemon = currentPage * pokemonsPerPage;//indice del ultimo pokemon. esto va a ser la pagina actual en la que estoy x la cantidad de pokemons por pagina que es 12. ej: estoy en la pagina 3 y hago 3x6
-  const indexOfFirstPokemon = indexOfLastPokemon - pokemonsPerPage;// esto da 0 en la primer pagina en la segunda pag da 6
-  const currentPokemons = allPokemons.slice(//va a tener los pokemons de cada pagina actual. con el  use selector me traigo el estado pomenos
+  const dispatch = useDispatch(); // para dispachar acciones 
+  const allPokemons = useSelector((state) => state.pokemons) //  me traigo todos los estados de pokemons (de reducer) 
+  const [currentPage, setCurrentPage] = useState(1);// me setea la pag en 1
+  const [pokemonsPerPage] = useState(12);//me setea 12 pokemons por pagina
+  const indexOfLastPokemon = currentPage * pokemonsPerPage;// pagina actual en la que estoy x la cantidad de pokemons por pagina que es 12, Da 12 que es la posisicon del ultimo pokemon de la primera pagina
+  const indexOfFirstPokemon = indexOfLastPokemon - pokemonsPerPage;// esto da 0 en la primer pagina en la segunda pag da 13
+  const currentPokemons = allPokemons.slice(// currentPokemonsva a tener los pokemons de cada pagina actual. allpokemons es el arreglo del estado que me lo traigo con el useSelector
     indexOfFirstPokemon, //el slice agarra un arreglo y toma una parte de el dependioendo lo que le paso por parametros.
     indexOfLastPokemon// le digo toma el indice del primer pokemon y el indice del ultimo pokemon 
   );//todo esto es para indicarel la cantidad de pokemons que queiro por pagina
@@ -31,8 +31,8 @@ function Home()
     setCurrentPage(pageNumber);
   };
 
-  useEffect(() => {//#3  CON EL USE EFECT EJECUTO UNA FUNCION CUANDO  EL CICLO DE VIDA DE MI COMPONENTE RECIEN COMIENZA
-    dispatch(getPokemons());// con dispatch voy a despachar la accion getPokemons.(que me traje con usedipatch)
+  useEffect(() => {//#3  CON EL USE EFECT EJECUTO UNA FUNCION CUANDO  EL CICLO DE VIDA DE MI COMPONENTE RECIEN CO
+    dispatch(getPokemons());// con dispatch voy a despachar la accion getPokemons.(que me traje con usedipatch de reducer)
   }, [dispatch]);
 
   function handleFilterType(e) {
@@ -57,21 +57,21 @@ function Home()
       <SearchBar className="search"/>
       <div className="home">
         <div>
-          <select name="select" onChange={onSelectsChange} className="a-z">
+          <select name="select" onChange={onSelectsChange} className="a-z"> *
             <option value="Filtro"> A-Z:</option>
             <option value="ASCENDENTE">Ascendente</option>
             <option value="DESCENDENTE">Descendente</option>
           </select>
           <select
             name="selects"
-            onChange={handleFilterAttack}
+            onChange={handleFilterAttack} 
             className="attack"
           >
             <option value="Fuerza"> Fuerza </option>
             <option value="Mayor fuerza">Mayor fuerza</option>
             <option value="Menor fuerza">Menor fuerza</option>
           </select>
-          <select onChange={handleFilterType}>
+          <select onChange={handleFilterType}> *
             <option value="type"> Tipo </option>//estpy value van al accion
             <option value="normal"> Normal </option>
             <option value="flying"> Flying </option>
@@ -84,18 +84,19 @@ function Home()
             <option value="electric"> Electric </option>
             <option value="fairy"> Fairy </option>
           </select>
-          <select onChange={handleFilterCreated}>
+          <select onChange={handleFilterCreated}> *
             <option value="Todos"> Todos </option>
             <option value="Creados"> Creados </option>
             <option value="Existentes"> Existentes </option>
           </select>
-          <Paginado
+          <Paginado //lo renderizo
+          
             pokemonsPerPage={pokemonsPerPage}
             allPokemons={allPokemons.length}
             paginado={paginado}
           />
-          {currentPokemons?.map((e) => {
-              return (
+          {currentPokemons?.map((e) => {//lo mapeo para traeme lo que necesito de la cards
+              return ( //renderizo la card 
                 <fragment>
                   <Link to={"/home/" + e.id}>
                     <CardPokemon
