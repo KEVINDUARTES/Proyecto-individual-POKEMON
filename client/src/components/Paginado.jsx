@@ -13,7 +13,7 @@ export default function Paginado({ pokemonsPerPage, allPokemons, paginado }) {//
         {pageNumbers &&
           pageNumbers.map(number => {
              return <li className="number" key ='num'>
-           <button className="btn" onClick={() => paginado(number)}>//le paso mi numero de paginas
+           <button className="btn" onClick={() => paginado(number)}>
              {number}
               </button>
             </li>
@@ -22,4 +22,4 @@ export default function Paginado({ pokemonsPerPage, allPokemons, paginado }) {//
     </nav>
   );
 }
-
+//le paso la const paginado que declare en home y le paso los numero de paginas a este

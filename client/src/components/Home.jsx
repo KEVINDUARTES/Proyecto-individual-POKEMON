@@ -18,10 +18,10 @@ import "./Home.css";
 function Home() 
   const dispatch = useDispatch(); // para dispachar acciones 
   const allPokemons = useSelector((state) => state.pokemons) //  me traigo todos los estados de pokemons (de reducer) 
-  const [currentPage, setCurrentPage] = useState(1);// me setea la pag en 1
+  const [currentPage, setCurrentPage] = useState(1);// me setea la pag en 1 . aca arranca el paginado
   const [pokemonsPerPage] = useState(12);//me setea 12 pokemons por pagina
-  const indexOfLastPokemon = currentPage * pokemonsPerPage;// pagina actual en la que estoy x la cantidad de pokemons por pagina que es 12, Da 12 que es la posisicon del ultimo pokemon de la primera pagina
-  const indexOfFirstPokemon = indexOfLastPokemon - pokemonsPerPage;// esto da 0 en la primer pagina en la segunda pag da 13
+  const indexOfLastPokemon = currentPage * pokemonsPerPage;//indice 8. pagina actual en la que estoy x la cantidad de pokemons por pagina que es 12, Da 12 que es la posisicon del ultimo pokemon de la primera pagina
+  const indexOfFirstPokemon = indexOfLastPokemon - pokemonsPerPage;//indice 0. esto da 0 en la primer pagina en la segunda pag da 13
   const currentPokemons = allPokemons.slice(// currentPokemonsva a tener los pokemons de cada pagina actual. allpokemons es el arreglo del estado que me lo traigo con el useSelector
     indexOfFirstPokemon, //el slice agarra un arreglo y toma una parte de el dependioendo lo que le paso por parametros.
     indexOfLastPokemon// le digo toma el indice del primer pokemon y el indice del ultimo pokemon 
@@ -32,7 +32,7 @@ function Home()
   };
 
   useEffect(() => {//#3  CON EL USE EFECT EJECUTO UNA FUNCION CUANDO  EL CICLO DE VIDA DE MI COMPONENTE RECIEN CO
-    dispatch(getPokemons());// con dispatch voy a despachar la accion getPokemons.(que me traje con usedipatch de reducer)
+    dispatch(getPokemons());// con dispatch voy a despachar el arreglo de estados q es la accion getPokemons.(que me traje con usedipatch de reducer)
   }, [dispatch]);
 
   function handleFilterType(e) {
@@ -63,8 +63,8 @@ function Home()
             <option value="DESCENDENTE">Descendente</option>
           </select>
           <select
-            name="selects"
-            onChange={handleFilterAttack} 
+            name="selects"//            para agregar la logica al filtrado me voy a las acciones del reducer
+            onChange={handleFilterAttack} //esta al tanto de los cambios para mandar el evento a la function
             className="attack"
           >
             <option value="Fuerza"> Fuerza </option>
@@ -89,11 +89,12 @@ function Home()
             <option value="Creados"> Creados </option>
             <option value="Existentes"> Existentes </option>
           </select>
-          <Paginado //lo renderizo
+          <Paginado //traeme el paginado y lo renderizo
           
-            pokemonsPerPage={pokemonsPerPage}
+            pokemonsPerPage={pokemonsPerPage}//le paso el estado que tengo arriba
             allPokemons={allPokemons.length}
-            paginado={paginado}
+            paginado={paginado}//le paso mi const paginado
+
           />
           {currentPokemons?.map((e) => {//lo mapeo para traeme lo que necesito de la cards
               return ( //renderizo la card 
