@@ -17,6 +17,7 @@ export const Team = () => {
   return (
     <div className={style.container}>
       <Card array={array} img={'https://media.giphy.com/media/SS4imysASHTHUsXyt6/source.gif?cid=ecf05e47q1uzwaxgylgvwkmsxvhlchbh8kvqe1bmf2emb35d&rid=source.gif&ct=s'}/>
+       
     </div>
   );
 };
