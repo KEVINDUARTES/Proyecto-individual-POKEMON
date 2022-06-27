@@ -16,19 +16,19 @@
     7px 7px 0 rgb(22, 160, 133);
 }
 
-.field > input[type="text"],
-.field > .button {
+.field>input[type="text"],
+.field>.button {
   display: block;
   font: 1.2em "Montserrat Alternates";
 }
 
-.field > input[type="text"] {
+.field>input[type="text"] {
   flex: 1;
   padding: 0.6em;
   border: 0.2em solid rgb(26, 188, 156);
 }
 
-.field > .button {
+.field>.button {
   padding: 0.6em 0.8em;
   background-color: rgb(26, 188, 156);
   color: white;
@@ -40,7 +40,7 @@
   margin-top: -50px;
 }
 
-.field2 > .button {
+.field2>.button {
   padding: 0.6em 0.8em;
   background-color: rgb(26, 188, 156);
   color: white;

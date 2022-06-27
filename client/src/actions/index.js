@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const getTypes = () => async (dispatch) => {
   const response = await fetch("https://kevindex.herokuapp.com/types");
   console.log(response);
@@ -9,8 +11,9 @@ export const getTypes = () => async (dispatch) => {
   });
 };
 
-export const getPokemons = () => async (dispatch) => {                  //aca hago la coneccion entre el front y el back
-  const response = await fetch(`https://kevindex.herokuapp.com/pokemons `);//le paso la ruta del back que me trae todos los pokemons
+export const getPokemons = () => async (dispatch) => {
+  //aca hago la coneccion entre el front y el back
+  const response = await fetch(`https://kevindex.herokuapp.com/pokemons `); //le paso la ruta del back que me trae todos los pokemons
 
   const data = await response.json();
   dispatch({
@@ -20,10 +23,11 @@ export const getPokemons = () => async (dispatch) => {                  //aca ha
 };
 
 export const getByName = (name) => async (dispatch) => {
-  const response = await fetch(
+  const response = await axios.get(
     `https://kevindex.herokuapp.com/pokemons?name=${name}`
   );
-  const data = await response.json();
+  console.log("response", response);
+  const data = response.data;
   dispatch({
     type: "GET_NAME",
     payload: data,

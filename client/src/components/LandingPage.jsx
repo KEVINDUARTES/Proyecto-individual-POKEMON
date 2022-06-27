@@ -7,7 +7,7 @@ import "./LandingPage.css"
 export default function LandingPage() {
   return (
     <div className="lp">
-        <img src="/pika.jpg" alt="" />
+        <img src="/pika" alt="" />
       <div>
         </div>
         <Link to="/home">

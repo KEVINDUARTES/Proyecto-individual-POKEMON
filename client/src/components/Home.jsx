@@ -71,7 +71,7 @@ function Home()
             <option value="Mayor fuerza">Mayor fuerza</option>
             <option value="Menor fuerza">Menor fuerza</option>
           </select>
-          <select onChange={handleFilterType}> *
+          <select  onChange={handleFilterType}> *
             <option value="type"> Tipo </option>//estpy value van al accion
             <option value="normal"> Normal </option>
             <option value="flying"> Flying </option>

@@ -17,14 +17,16 @@ export const LandingPage = () => {
           abilities.
         </p>
         <Link to="/home">
-          <button type="submit" value="See Pokemon" className={style.myButton} />
+          <button type="submit" className={style.myButton} >
+            See Pokemon
+            </button>
         </Link>
 
   
       </div>
 
-      <div>jpg
-        <img src="https://i.pinimg.com/originals/a4/86/bc/a486bc6092d979b69954c52b943799ff.png" alt="" />
+      <div>
+        {/* <img src="https://i.pinimg.com/originals/a4/86/bc/a486bc6092d979b69954c52b943799ff.png" alt="" /> */}
       </div>
     </div>
   );
